@@ -11,7 +11,7 @@ export const handleAppRouteError: ErrorRequestHandler = (error: any, req: Reques
     logger.error(error.message);
 
     if (req.accepts('html')) {
-        // serve a 500.html 
+        // serve a 500.html
     }
 
     res.status(status).json({ error: { message: 'Something went wrong', code: status } });

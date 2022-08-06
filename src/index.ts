@@ -27,7 +27,7 @@ app.use(
     limiter,
 
     // serve static files
-    express.static(path.join(__dirname, './react-app/build')),
+    express.static(path.join(__dirname, './../react-app/build')),
     express.static(path.join(__dirname, './public')),
 
     // autherize all request
@@ -38,7 +38,7 @@ app.use('/', appRoutes);
 
 // serve react app
 // app.get('/*', (req, res) => {
-//     const index = path.join(__dirname, './react-app/build', 'index.html');
+//     const index = path.join(__dirname, './../react-app/build', 'index.html');
 //     if (fs.existsSync(index)) {
 //         res
 //             // .set("Content-Security-Policy", AppConst.contentSecurityPolicy)

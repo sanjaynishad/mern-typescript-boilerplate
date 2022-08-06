@@ -3,7 +3,7 @@ import { IAppResponse } from "../interfaces";
 export function sendSuccessResponse(res: IAppResponse, data: any, message?: string) {
     res.send({
         data,
-        message: message
+        message
     });
 }
 
