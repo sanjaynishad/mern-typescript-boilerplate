@@ -1,0 +1,56 @@
+{
+  "name": "mern-typescript-boilerplate-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node dist/index.js",
+    "serve": "cross-env NODE_ENV=development && concurrently \"tsc --watch\" \"nodemon dist/index.js\"",
+    "build": "tsc",
+    "postbuild": "cpx ./src/public/**/* ./dist/public",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanjaynishad/mern-typescript-boilerplate.git"
+  },
+  "author": "Sanjay Nishad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sanjaynishad/mern-typescript-boilerplate/issues"
+  },
+  "homepage": "https://github.com/sanjaynishad/mern-typescript-boilerplate#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.20.0",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-rate-limit": "^6.5.1",
+    "helmet": "^5.1.1",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.4.6",
+    "winston": "^3.8.1"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/body-parser": "^1.19.2",
+    "@types/compression": "^1.7.2",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/jsonwebtoken": "^8.5.8",
+    "@types/lodash": "^4.14.182",
+    "@types/mongoose": "^5.11.97",
+    "@types/node": "^18.6.1",
+    "@types/winston": "^2.4.4",
+    "concurrently": "^7.3.0",
+    "cpx": "^1.5.0",
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.19",
+    "typescript": "^4.7.4"
+  }
+}

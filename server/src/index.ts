@@ -62,7 +62,7 @@ connectToMongoDb(err => {
     }
 
     // listen to port
-    const port = process.env.PORT || 3000;
+    const port = process.env.PORT || 8080;
     app.listen(port, async () => {
         logger.info(`🚀 Server ready at: http://localhost:${port} in ${process.env.NODE_ENV} mode.`);
     });
