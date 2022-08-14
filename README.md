@@ -17,6 +17,8 @@ Node typescript boilerplate with React, Express, Mongoose, JWT, Facebook and Goo
 - Client
 
   - React client with functional components
+  - Multiple layout for Guest, Autherised users and Admins 
+  - Dynamic Class Name to Body When Navigating
   - [ant.design](https://ant.design/) components
   - Home, Users, Profile, Admin, Notfound, Login and Register pages
   - Protected routes with Higher order components
