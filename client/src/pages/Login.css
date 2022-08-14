@@ -1,0 +1,69 @@
+.layout-default.layout-signin header.ant-layout-header {
+    display: flex;
+    position: relative;
+    background-color: #fff;
+    color: #141414;
+    box-shadow: 0 20px 27px rgb(0 0 0 / 5%);
+    flex-direction: row;
+    padding: 0 50px;
+    height: 64px;
+    line-height: 64px;
+}
+
+.sign-in {
+    padding: 0 20px;
+}
+
+.signin {
+    white-space: nowrap;
+    margin: 0px 20px;
+}
+
+.signin span.ant-avatar {
+    margin-right: 9px;
+}
+
+.signin h1 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #141414;
+}
+
+.signin h5 {
+    font-weight: 400;
+    color: #8c8c8c;
+    font-size: 20px;
+    white-space: normal;
+}
+
+.sign-img img {
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    display: block;
+}
+
+.layout-signin {
+    background: #fff;
+}
+
+.layout-signin footer.ant-layout-footer svg {
+    width: 18px;
+    height: 18px;
+}
+
+.layout-signin footer.ant-layout-footer ul li:after {
+    display: none;
+}
+
+.rightside-top .signin {
+    display: inline-flex;
+}
+
+.rightside-top .signin svg {
+    margin-right: 5px;
+}
+
+.signin .ant-form-item-control-input button.ant-switch {
+    margin-right: 5px;
+}
