@@ -1,4 +1,4 @@
-export class IModelBase {
+export class ModelBase {
     _id?: string;
     createdBy?: string;
     createdAt?: string;

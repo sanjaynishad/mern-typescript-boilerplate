@@ -4,10 +4,10 @@ import { authProvider } from "../../api/AuthApi";
 import { Link } from 'react-router-dom';
 import { Component, ReactNode } from 'react';
 import defaultProfileImg from './../../assets/images/user.svg';
-import { IUser } from '../../interfaces/models';
+import { User } from '../../models';
 
 interface IProfilePopoverState {
-    me: IUser;
+    me: User;
 }
 
 export class ProfilePopover extends Component<React.HTMLAttributes<HTMLDivElement>, IProfilePopoverState> {

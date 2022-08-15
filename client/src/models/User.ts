@@ -1,4 +1,4 @@
-import { IModelBase } from "./IModelBase";
+import { ModelBase } from "./ModelBase";
 
 export const Role = Object.freeze({
     User: 'user',
@@ -8,7 +8,7 @@ export const Role = Object.freeze({
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export type Role = typeof Role[keyof typeof Role];
 
-export interface IUser extends IModelBase {
+export class User extends ModelBase {
     email?: string;
     password?: string;
     role?: Role;

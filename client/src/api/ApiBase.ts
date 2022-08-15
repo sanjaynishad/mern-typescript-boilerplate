@@ -1,12 +1,12 @@
 import { getUrlQueryString, isRunningOnLocalhost } from "../app-utils";
-import { IModelBase, IUser } from "../interfaces/models";
+import { ModelBase, User } from "../models";
 
 interface IAppRuntimeCache {
-    me?: IUser,
+    me?: User,
     token: string | null;
 }
 
-export class ApiBase<T extends IModelBase> {
+export class ApiBase<T extends ModelBase> {
     protected cache: IAppRuntimeCache = {
         token: localStorage.getItem('token')
     };

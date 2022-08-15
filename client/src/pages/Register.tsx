@@ -18,13 +18,13 @@ import {
     GoogleOutlined
 } from "@ant-design/icons";
 import { authProvider } from '../api/AuthApi';
-import { IUser } from '../interfaces/models';
+import { User } from '../models';
 
 const { Title } = Typography;
 const { Content } = Layout;
 
 interface IRegisterState {
-    user: IUser;
+    user: User;
     acceptedTerms: boolean;
 }
 

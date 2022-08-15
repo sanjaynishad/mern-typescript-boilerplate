@@ -1,9 +1,9 @@
-import { IModelBase, Role } from "../interfaces/models";
+import { ModelBase, Role } from "../models";
 import { ApiBase } from "./ApiBase";
 
-export class AuthApi extends ApiBase<IModelBase> {
+export class AuthApi extends ApiBase<ModelBase> {
     constructor() {
-        super(IModelBase, '', 'auth');
+        super(ModelBase, '', 'auth');
     }
 
     async register(reqData: any) {

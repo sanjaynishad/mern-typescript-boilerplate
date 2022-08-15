@@ -7,12 +7,12 @@ import {
 import { profile, template } from "../../app-icons";
 import { DesktopOutlined } from "@ant-design/icons";
 import { authProvider } from "../../api/AuthApi";
-import { IUser, Role } from "../../interfaces/models";
+import { User, Role } from "../../models";
 import { ProfilePopover } from "./ProfilePopover";
 const { Header } = Layout;
 
 interface IMainHeaderState {
-    me: IUser;
+    me: User;
 }
 export class MainHeader extends Component<any, IMainHeaderState> {
 
