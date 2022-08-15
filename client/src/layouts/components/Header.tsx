@@ -1,16 +1,15 @@
 import { Component } from "react";
 import { Link } from "react-router-dom";
 import {
-    Button,
     Layout,
     Menu
 } from "antd";
 import { profile, template } from "../../app-icons";
-import { DesktopOutlined, LogoutOutlined } from "@ant-design/icons";
+import { DesktopOutlined } from "@ant-design/icons";
 import { authProvider } from "../../api/AuthApi";
 import { IUser, Role } from "../../interfaces/models";
+import { ProfilePopover } from "./ProfilePopover";
 const { Header } = Layout;
-
 
 interface IMainHeaderState {
     me: IUser;
@@ -61,14 +60,12 @@ export class MainHeader extends Component<any, IMainHeaderState> {
                                     <span>Profile</span>
                                 </Link>
                             </Menu.Item>
-                            <Menu.Item key="logout">
-                                <Button type="link" className="text-dark" onClick={() => authProvider.logout("/")}>
-                                    <LogoutOutlined />
-                                    <span> Log Out</span>
-                                </Button>
-                            </Menu.Item>
                         </Menu>
                     </div>
+                    <div>
+                        <ProfilePopover />
+                    </div>
+
                 </Header>
             </>
         );

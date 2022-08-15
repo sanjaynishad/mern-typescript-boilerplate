@@ -247,33 +247,6 @@ body {
     margin: 0;
 }
 
-.ant-btn-sm,
-.ant-radio-group-small .ant-radio-button-wrapper {
-    height: 34px;
-    font-size: 12px;
-    padding: 0 15px;
-}
-
-.ant-btn-sm {
-    border-radius: 4px;
-}
-
-.ant-btn-sm,
-.ant-radio-group-small .ant-radio-button-wrapper {
-    height: 34px;
-    font-size: 12px;
-    padding: 0 15px;
-}
-
-.ant-btn-sm {
-    border-radius: 4px;
-}
-
-.ant-btn,
-.ant-radio-group .ant-radio-button-wrapper {
-    font-weight: 600;
-}
-
 .layout-dashboard .ant-layout-sider.sider-primary .aside-footer {
     padding-top: 100px;
     padding-bottom: 33px;
@@ -428,10 +401,6 @@ h4 {
     box-shadow: none;
     color: #8c8c8c;
     line-height: normal;
-}
-
-.ant-btn svg {
-    margin-right: 5px;
 }
 
 .layout-dashboard .header-control svg {
@@ -1770,20 +1739,6 @@ body {
 
 .text-dark {
     color: #141414;
-}
-
-.ant-btn,
-.ant-radio-group .ant-radio-button-wrapper {
-    font-weight: 600;
-    font-size: 12px;
-    height: 40px;
-    padding: 0 15px;
-    line-height: 40px;
-}
-
-.ant-btn {
-    box-shadow: 0 2px 4px rgb(0 0 0 / 7%);
-    border-radius: 6px;
 }
 
 .layout-default .ant-layout-footer {

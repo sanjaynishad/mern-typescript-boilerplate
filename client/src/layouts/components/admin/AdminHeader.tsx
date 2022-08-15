@@ -5,7 +5,8 @@ import {
     Layout,
     Row
 } from "antd";
-import { profile, template } from "../../../app-icons";
+import { template } from "../../../app-icons";
+import { ProfilePopover } from "../ProfilePopover";
 const { Header } = Layout;
 
 const toggler = [
@@ -39,11 +40,7 @@ export function AdminHeader({ onPress }: IAdminHeaderProps) {
                     </Button>
                 </Col>
                 <Col span={24} md={18} className="header-control">
-                    <Link to="profile" className="text-dark">
-                        {profile}
-                        <span>Sanjay Nishad</span>
-                    </Link>
-
+                    <ProfilePopover className="ms-1" />
                     <Link to="/" className="text-dark">
                         {template}
                         <span> Exit to application</span>
