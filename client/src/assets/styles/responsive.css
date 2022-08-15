@@ -15,7 +15,7 @@
         margin-left: 270px;
     }
 
-    .layout-dashboard .header-control .sidebar-toggler {
+    .layout-dashboard .ant-layout-header .sidebar-toggler {
         display: none;
     }
 }

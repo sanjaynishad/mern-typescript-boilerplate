@@ -1,42 +1,55 @@
 import { Link } from "react-router-dom";
 import {
+    Button,
+    Col,
     Layout,
-    Menu
+    Row
 } from "antd";
 import { profile, template } from "../../../app-icons";
 const { Header } = Layout;
 
-export function AdminHeader() {
+const toggler = [
+    <svg
+        width="20"
+        height="20"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 448 512"
+        key={0}
+    >
+        <path d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path>
+    </svg>,
+];
+
+interface IAdminHeaderProps {
+    onPress: () => void;
+}
+
+export function AdminHeader({ onPress }: IAdminHeaderProps) {
     return (
         <Header>
-            <div className="header-col header-nav">
-                <Menu mode="horizontal" defaultSelectedKeys={["1"]}>
-                    <Menu.Item key="1">
-                        <Link to="/">
-                            {template}
-                            <span> Exit to application</span>
-                        </Link>
-                    </Menu.Item>
-                    <Menu.Item key="2">
-                        <Link to="dashboard">
-                            {template}
-                            <span> Dashboard</span>
-                        </Link>
-                    </Menu.Item>
-                    <Menu.Item key="3">
-                        <Link to="users">
-                            {template}
-                            <span> Users</span>
-                        </Link>
-                    </Menu.Item>
-                    <Menu.Item key="4">
-                        <Link to="/profile">
-                            {profile}
-                            <span>Profile</span>
-                        </Link>
-                    </Menu.Item>
-                </Menu>
-            </div>
+            <Row>
+                <Col span={24} md={6}>
+                    {/* TODO: add breadcrunb and move toggler in another col */}
+                    <Button
+                        type="link"
+                        className="sidebar-toggler"
+                        onClick={() => onPress()}
+                    >
+                        {toggler}
+                    </Button>
+                </Col>
+                <Col span={24} md={18} className="header-control">
+                    <Link to="profile" className="text-dark">
+                        {profile}
+                        <span>Sanjay Nishad</span>
+                    </Link>
+
+                    <Link to="/" className="text-dark">
+                        {template}
+                        <span> Exit to application</span>
+                    </Link>
+                </Col>
+            </Row>
         </Header>
     );
 }

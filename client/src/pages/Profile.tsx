@@ -14,9 +14,15 @@ export default class ProfilePage extends Component {
                     </Col>
                 </Row>
 
-                <Card title="Change password">
+                <Row className="mb-24">
+                    <Col span={24}>
+                        <Card title="Change password">
 
-                </Card>
+                        </Card>
+                    </Col>
+                </Row>
+
+
             </Layout.Content>
         );
     }

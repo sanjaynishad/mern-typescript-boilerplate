@@ -12,17 +12,21 @@ import MainLayout from './layouts/MainLayout';
 import AdminLayout from './layouts/AdminLayout';
 import { PageLoader } from './components/PageLoader';
 
+// public pages
 const NotFoundPage = React.lazy(() => import("./pages/404"));
 const RegisterPage = React.lazy(() => import("./pages/Register"));
 const LoginPage = React.lazy(() => import("./pages/Login"));
+
+// user auth pages
 const ProfilePage = React.lazy(() => import("./pages/Profile"));
+
+// admin pages
 const AdminDashboardPage = React.lazy(() => import("./pages-admin/AdminDashboard"));
 const UsersPage = React.lazy(() => import("./pages-admin/Users"));
 
-const NotFoundSuspense =
-  () => (<Suspense fallback="Not found!">
-    <NotFoundPage />
-  </Suspense>);
+const NotFoundSuspense = () => (<Suspense fallback="Not found!">
+  <NotFoundPage />
+</Suspense>);
 
 function App() {
   return (
@@ -77,6 +81,12 @@ function App() {
           <Route path={AppRoutesConst.users} element={
             <Suspense fallback={<PageLoader />}>
               <UsersPage />
+            </Suspense>
+          } />
+
+          <Route path={AppRoutesConst.profile} element={
+            <Suspense fallback={<PageLoader />}>
+              <ProfilePage />
             </Suspense>
           } />
 

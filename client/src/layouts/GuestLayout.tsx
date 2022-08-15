@@ -1,3 +1,5 @@
+import './GuestLayout.css';
+
 import { Layout } from "antd";
 import { Outlet } from "react-router-dom";
 import { GuestFooter } from "./components/guest/GuestFooter";
