@@ -34,3 +34,7 @@ Read on on how to set up this for development. Clone the repo.
 $ git clone https://github.com/sanjaynishad/mern-typescript-boilerplate.git
 $ cd mern-typescript-boilerplate
 ```
+
+## TODO
+ - Fix icons
+ - Fix style naming

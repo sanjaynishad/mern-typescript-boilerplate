@@ -14,7 +14,7 @@ loginRoutes.post('/', async (req: IAppRequest, res: IAppResponse) => {
 
     const userDoc = await userService.findByEmail(email);
     if (!userDoc) {
-        return sendNotFoundResponse(res, 'User dosn\'t exist.');
+        return sendNotFoundResponse(res, 'Email is not registered with us.');
     }
 
     if (!userDoc.comparePassword(password)) {

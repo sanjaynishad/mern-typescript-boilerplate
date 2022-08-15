@@ -1,14 +1,38 @@
 import { Component } from "react";
 import { Link } from "react-router-dom";
 import {
+    Button,
     Layout,
     Menu
 } from "antd";
-import { profile, signin, signup, template } from "../../app-icons";
-import { DesktopOutlined } from "@ant-design/icons";
+import { profile, template } from "../../app-icons";
+import { DesktopOutlined, LogoutOutlined } from "@ant-design/icons";
+import { authProvider } from "../../api/AuthApi";
+import { IUser, Role } from "../../interfaces/models";
 const { Header } = Layout;
-export class MainHeader extends Component {
+
+
+interface IMainHeaderState {
+    me: IUser;
+}
+export class MainHeader extends Component<any, IMainHeaderState> {
+
+    constructor(props: any) {
+        super(props);
+
+        this.state = {
+            me: {}
+        }
+    }
+
+    async componentDidMount() {
+        this.setState({
+            me: await authProvider.me() || {}
+        });
+    }
+
     render() {
+        const { role } = this.state.me;
         return (
             <>
                 <Header>
@@ -18,36 +42,30 @@ export class MainHeader extends Component {
                         </Link>
                     </div>
                     <div className="header-col header-nav">
-                        <Menu mode="horizontal" defaultSelectedKeys={["1"]}>
-                            <Menu.Item key="0">
+                        <Menu mode="horizontal" defaultSelectedKeys={["dashboard"]}>
+                            {role === Role.Admin && (<Menu.Item key="admin">
                                 <Link to="/admin">
                                     <DesktopOutlined />
                                     <span> Admin Portal</span>
                                 </Link>
-                            </Menu.Item>
-                            <Menu.Item key="1">
+                            </Menu.Item>)}
+                            <Menu.Item key="dashboard">
                                 <Link to="/dashboard">
                                     {template}
                                     <span> Dashboard</span>
                                 </Link>
                             </Menu.Item>
-                            <Menu.Item key="2">
+                            <Menu.Item key="profile">
                                 <Link to="/profile">
                                     {profile}
                                     <span>Profile</span>
                                 </Link>
                             </Menu.Item>
-                            <Menu.Item key="3">
-                                <Link to="/register">
-                                    {signup}
-                                    <span> Sign Up</span>
-                                </Link>
-                            </Menu.Item>
-                            <Menu.Item key="4">
-                                <Link to="/login">
-                                    {signin}
-                                    <span> Log In</span>
-                                </Link>
+                            <Menu.Item key="logout">
+                                <Button type="link" className="text-dark" onClick={() => authProvider.logout("/")}>
+                                    <LogoutOutlined />
+                                    <span> Log Out</span>
+                                </Button>
                             </Menu.Item>
                         </Menu>
                     </div>

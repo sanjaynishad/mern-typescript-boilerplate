@@ -12,7 +12,11 @@ class ProfileService extends BaseModelService<typeof User, UserDocument> {
     async registerUser(body: any) {
         const data = registerSchema.validate(body);
         if (data.error) {
-            return data.error;
+            return {
+                error: {
+                    message: data.error.message
+                }
+            };
         }
 
         const user = new User(data.value);
@@ -22,7 +26,9 @@ class ProfileService extends BaseModelService<typeof User, UserDocument> {
         }
 
         delete u.password;
-        return u.toObject();
+        return {
+            data: u.toObject()
+        };
     }
 
     async updateProfile(reqUser: IUser, profileData: any) {

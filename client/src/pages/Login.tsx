@@ -1,6 +1,6 @@
 import './Login.css';
 import { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import {
     Layout,
     Button,
@@ -9,12 +9,29 @@ import {
     Typography,
     Form,
     Input,
+    notification,
 } from "antd";
 import signinbg from "../assets/images/img-signin.jpg";
+import { authProvider } from '../api/AuthApi';
 const { Title } = Typography;
 const { Content } = Layout;
 
-export default class LoginPage extends Component {
+interface ILoginPageState {
+    email: string;
+    password: string;
+}
+
+export default class LoginPage extends Component<any, ILoginPageState> {
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            email: '',
+            password: ''
+        };
+
+        this.onSubmit = this.onSubmit.bind(this);
+    }
+
     componentDidMount() {
         document.querySelector(".guest-layout")?.classList.add("layout-signin");
     }
@@ -23,14 +40,24 @@ export default class LoginPage extends Component {
         document.querySelector(".guest-layout")?.classList.remove("layout-signin");
     }
 
-    render() {
-        const onFinish = (values: any) => {
-            console.log("Success:", values);
-        };
+    async onSubmit(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        const { email, password } = this.state;
+        if (await authProvider.login(email, password)) {
+            window.location.href = '/';
+        } else {
+            notification.error({
+                message: "Something is wrong!"
+            });
+        }
+    }
 
-        const onFinishFailed = (errorInfo: any) => {
-            console.log("Failed:", errorInfo);
-        };
+    render() {
+        if (authProvider.isLoggedIn()) {
+            return (
+                <Navigate to="/dashbaord" replace />
+            )
+        }
 
         return (
             <Content className="signin">
@@ -45,11 +72,9 @@ export default class LoginPage extends Component {
                             Enter your email and password to login
                         </Title>
                         <Form
-                            onFinish={onFinish}
-                            onFinishFailed={onFinishFailed}
+                            onSubmitCapture={this.onSubmit}
                             layout="vertical"
-                            className="row-col"
-                        >
+                            className="row-col">
                             <Form.Item
                                 className="username"
                                 label="Email"
@@ -61,7 +86,12 @@ export default class LoginPage extends Component {
                                     },
                                 ]}
                             >
-                                <Input placeholder="Email" type="email" />
+                                <Input
+                                    autoFocus
+                                    placeholder="Email"
+                                    type="email"
+                                    value={this.state.email}
+                                    onChange={e => this.setState({ email: e.target.value })} />
                             </Form.Item>
 
                             <Form.Item
@@ -75,7 +105,11 @@ export default class LoginPage extends Component {
                                     },
                                 ]}
                             >
-                                <Input placeholder="Password" type="password" />
+                                <Input
+                                    placeholder="Password"
+                                    type="password"
+                                    value={this.state.password}
+                                    onChange={e => this.setState({ password: e.target.value })} />
                             </Form.Item>
 
                             <Form.Item>

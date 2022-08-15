@@ -17,26 +17,26 @@ export class GuestHeader extends Component {
                         </Link>
                     </div>
                     <div className="header-col header-nav">
-                        <Menu mode="horizontal" defaultSelectedKeys={["1"]}>
-                            <Menu.Item key="1">
-                                <Link to="/dashboard">
+                        <Menu mode="horizontal" defaultSelectedKeys={["home"]}>
+                            <Menu.Item key="home">
+                                <Link to="/">
                                     {template}
-                                    <span> Dashboard</span>
+                                    <span> Home</span>
                                 </Link>
                             </Menu.Item>
-                            <Menu.Item key="2">
-                                <Link to="/profile">
+                            <Menu.Item key="about-us">
+                                <Link to="/about-us">
                                     {profile}
-                                    <span>Profile</span>
+                                    <span> About Us</span>
                                 </Link>
                             </Menu.Item>
-                            <Menu.Item key="3">
+                            <Menu.Item key="register">
                                 <Link to="/register">
                                     {signup}
                                     <span> Sign Up</span>
                                 </Link>
                             </Menu.Item>
-                            <Menu.Item key="4">
+                            <Menu.Item key="login">
                                 <Link to="/login">
                                     {signin}
                                     <span> Log In</span>

@@ -9,7 +9,11 @@ export function verifyJwtToken(token: string): IUser | undefined {
         return;
     }
 
-    return jwt.verify(token, AppConst.jwtSecret) as IUser;
+    try {
+        return jwt.verify(token, AppConst.jwtSecret) as IUser;
+    } catch (err) {
+        logger.error(err);
+    }
 }
 
 export function createJwtToken(userInfo: IUser) {

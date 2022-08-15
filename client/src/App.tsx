@@ -4,13 +4,16 @@ import "./assets/styles/main.css";
 import "./assets/styles/responsive.css";
 
 import React, { Suspense } from 'react';
-import { BrowserRouter, Link, Navigate, Outlet, Route, Routes, } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes, } from 'react-router-dom';
 import { AppRoutesConst } from './app-const';
 
 import GuestLayout from './layouts/GuestLayout';
 import MainLayout from './layouts/MainLayout';
 import AdminLayout from './layouts/AdminLayout';
 import { PageLoader } from './components/PageLoader';
+import { authProvider } from './api/AuthApi';
+import { RequireAdmin } from './components/RequireAdmin';
+import { RequireAuth } from './components/RequireAuth';
 
 // public pages
 const NotFoundPage = React.lazy(() => import("./pages/404"));
@@ -29,44 +32,41 @@ const NotFoundSuspense = () => (<Suspense fallback="Not found!">
 </Suspense>);
 
 function App() {
+  authProvider.me();
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Outlet />}>
-          {/* Public Routes */}
-          <Route element={<GuestLayout />}>
-            <Route index element={
-              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '200px' }}>
-                <h2>Home page</h2>
-              </div>
-            } />
-            <Route path={AppRoutesConst.login} element={
-              <Suspense fallback={<PageLoader />}>
-                <LoginPage />
-              </Suspense>
-            } />
-            <Route path={AppRoutesConst.register} element={
-              <Suspense fallback={<PageLoader />}>
-                <RegisterPage />
-              </Suspense>
-            } />
 
-            {/* Not Found */}
-            {/* <Route path="*" element={<NotFoundSuspense />} /> */}
-          </Route>
+        {/* Public Routes */}
+        <Route element={authProvider.isLoggedIn() ? <MainLayout /> : <GuestLayout />}>
+          <Route index element={
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '200px' }}>
+              <h2>Home page</h2>
+            </div>
+          } />
+          <Route path={AppRoutesConst.login} element={
+            <Suspense fallback={<PageLoader />}>
+              <LoginPage />
+            </Suspense>
+          } />
+          <Route path={AppRoutesConst.register} element={
+            <Suspense fallback={<PageLoader />}>
+              <RegisterPage />
+            </Suspense>
+          } />
 
           {/* Auth Routes */}
-          <Route element={<MainLayout />}>
-            <Route index element={<div>Home page <Link to="asd">Link2s</Link> </div>} />
-            <Route path={AppRoutesConst.profile} element={
-              <Suspense fallback={<PageLoader />}>
+          <Route path={AppRoutesConst.profile} element={
+            <Suspense fallback={<PageLoader />}>
+              <RequireAuth>
                 <ProfilePage />
-              </Suspense>
-            } />
+              </RequireAuth>
+            </Suspense>
+          } />
 
-            {/* Not Found */}
-            <Route path="*" element={<NotFoundSuspense />} />
-          </Route>
+          {/* Not Found */}
+          <Route path="*" element={<NotFoundSuspense />} />
         </Route>
 
         {/* Admin Routes */}
@@ -75,12 +75,16 @@ function App() {
 
           <Route path={AppRoutesConst.dashboard} element={
             <Suspense fallback={<PageLoader />}>
-              <AdminDashboardPage />
+              <RequireAdmin>
+                <AdminDashboardPage />
+              </RequireAdmin>
             </Suspense>
           } />
           <Route path={AppRoutesConst.users} element={
             <Suspense fallback={<PageLoader />}>
-              <UsersPage />
+              <RequireAdmin>
+                <UsersPage />
+              </RequireAdmin>
             </Suspense>
           } />
 

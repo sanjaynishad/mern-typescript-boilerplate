@@ -30,6 +30,11 @@ export function authorize(req: IAppRequest, res: IAppResponse, next: NextFunctio
 
     if (token) {
         const decoded = verifyJwtToken(token);
+        if (!decoded) {
+            sendUnauthorizedResponse(res);
+            return;
+        }
+
         req.user = decoded;
         res.locals.user = decoded;
     }

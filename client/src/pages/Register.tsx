@@ -8,25 +8,75 @@ import {
     Form,
     Input,
     Checkbox,
+    notification,
 } from "antd";
 
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import {
     GithubOutlined,
     FacebookFilled,
     GoogleOutlined
 } from "@ant-design/icons";
+import { authProvider } from '../api/AuthApi';
+import { IUser } from '../interfaces/models';
 
 const { Title } = Typography;
 const { Content } = Layout;
 
-export default class RegisterPage extends Component {
+interface IRegisterState {
+    user: IUser;
+    acceptedTerms: boolean;
+}
+
+export default class RegisterPage extends Component<any, IRegisterState> {
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            acceptedTerms: true,
+            user: {}
+        };
+
+        this.onSubmit = this.onSubmit.bind(this);
+    }
+
     componentDidMount() {
         document.querySelector(".guest-layout")?.classList.add("layout-sign-up");
     }
 
     componentWillUnmount() {
         document.querySelector(".guest-layout")?.classList.remove("layout-sign-up");
+    }
+
+    async onSubmit(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        const { firstName, lastName, email, password } = this.state.user;
+        if (!(firstName && lastName && email && password)) {
+            alert('All fields are required!');
+            return;
+        }
+
+        if (!this.state.acceptedTerms) {
+            notification.warn({
+                message: "You must agree to the terms and conditions."
+            });
+
+            return;
+        }
+
+        const data = await authProvider.register(this.state.user);
+        if (data?.error) {
+            notification.error({
+                message: data.error?.message || 'Something is wrong!'
+            });
+        }
+
+        if (data?.message) {
+            notification.info({
+                message: data.message || 'Registered successfully!'
+            });
+
+            window.location.href = '/login';
+        }
     }
 
     render() {
@@ -37,6 +87,13 @@ export default class RegisterPage extends Component {
         const onFinishFailed = (errorInfo: any) => {
             console.log("Failed:", errorInfo);
         };
+
+        if (authProvider.isLoggedIn()) {
+            return (
+                <Navigate to="/dashbaord" replace />
+            )
+        }
+
         return (
             <>
                 <Content className="p-0">
@@ -74,6 +131,7 @@ export default class RegisterPage extends Component {
                             initialValues={{ remember: true }}
                             onFinish={onFinish}
                             onFinishFailed={onFinishFailed}
+                            onSubmitCapture={this.onSubmit}
                             className="row-col"
                         >
                             <Form.Item
@@ -82,7 +140,11 @@ export default class RegisterPage extends Component {
                                     { required: true, message: "Please input your First name!" },
                                 ]}
                             >
-                                <Input placeholder="First name" />
+                                <Input
+                                    autoFocus
+                                    placeholder="First name"
+                                    value={this.state.user.firstName}
+                                    onChange={e => this.setState({ user: { ...this.state.user, firstName: e.target.value } })} />
                             </Form.Item>
 
                             <Form.Item
@@ -91,7 +153,10 @@ export default class RegisterPage extends Component {
                                     { required: true, message: "Please input your Last name!" },
                                 ]}
                             >
-                                <Input placeholder="Last name" />
+                                <Input
+                                    placeholder="Last name"
+                                    value={this.state.user.lastName}
+                                    onChange={e => this.setState({ user: { ...this.state.user, lastName: e.target.value } })} />
                             </Form.Item>
 
                             <Form.Item
@@ -100,7 +165,11 @@ export default class RegisterPage extends Component {
                                     { required: true, message: "Please input your email!" },
                                 ]}
                             >
-                                <Input placeholder="Email" type="email" />
+                                <Input
+                                    placeholder="Email"
+                                    type="email"
+                                    value={this.state.user.email}
+                                    onChange={e => this.setState({ user: { ...this.state.user, email: e.target.value } })} />
                             </Form.Item>
                             <Form.Item
                                 name="password"
@@ -108,15 +177,26 @@ export default class RegisterPage extends Component {
                                     { required: true, message: "Please input your password!" },
                                 ]}
                             >
-                                <Input placeholder="Passwoed" type="password" />
+                                <Input
+                                    placeholder="Password"
+                                    type="password"
+                                    value={this.state.user.password}
+                                    onChange={e => this.setState({ user: { ...this.state.user, password: e.target.value } })} />
                             </Form.Item>
 
-                            <Form.Item name="remember" valuePropName="checked">
-                                <Checkbox>
+                            <Form.Item
+                                name="remember"
+                                rules={[{
+                                    required: true,
+                                    message: "You must agree to the terms and conditions."
+                                }]}>
+                                <Checkbox
+                                    checked={this.state.acceptedTerms}
+                                    onChange={e => this.setState({ acceptedTerms: e.target.checked })} >
                                     I agree the{" "}
-                                    <a href="#pablo" className="font-bold text-dark">
+                                    <Link to="/terms" className="font-bold text-dark">
                                         Terms and Conditions
-                                    </a>
+                                    </Link>
                                 </Checkbox>
                             </Form.Item>
 

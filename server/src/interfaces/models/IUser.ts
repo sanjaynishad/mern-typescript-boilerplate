@@ -40,7 +40,7 @@ export interface IUser {
     github: string;
     linkedin: string;
 
-    tokens: IToken[];
+    tokens?: IToken[];
 
     firstName: string;
     lastName: string;
