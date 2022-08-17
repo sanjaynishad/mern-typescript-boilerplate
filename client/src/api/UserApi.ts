@@ -6,3 +6,5 @@ export class UserApi extends ApiBase<User> {
         super(User, 'users');
     }
 }
+
+export const userApi = new UserApi();

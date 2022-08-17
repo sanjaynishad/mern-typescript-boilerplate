@@ -15,4 +15,5 @@ export class User extends ModelBase {
     firstName?: string;
     lastName?: string;
     phone?: string;
+    avatar?: string;
 }

@@ -4,8 +4,7 @@ import {
     Layout,
     Menu
 } from "antd";
-import { profile, template } from "../../app-icons";
-import { DesktopOutlined } from "@ant-design/icons";
+import { DashboardOutlined, DesktopOutlined, HomeOutlined, ProfileOutlined } from "@ant-design/icons";
 import { authProvider } from "../../api/AuthApi";
 import { User, Role } from "../../models";
 import { ProfilePopover } from "./ProfilePopover";
@@ -48,15 +47,21 @@ export class MainHeader extends Component<any, IMainHeaderState> {
                                     <span> Admin Portal</span>
                                 </Link>
                             </Menu.Item>)}
+                            <Menu.Item key="home">
+                                <Link to="/">
+                                    <HomeOutlined />
+                                    <span> Home</span>
+                                </Link>
+                            </Menu.Item>
                             <Menu.Item key="dashboard">
                                 <Link to="/dashboard">
-                                    {template}
+                                    <DashboardOutlined />
                                     <span> Dashboard</span>
                                 </Link>
                             </Menu.Item>
                             <Menu.Item key="profile">
                                 <Link to="/profile">
-                                    {profile}
+                                    <ProfileOutlined />
                                     <span>Profile</span>
                                 </Link>
                             </Menu.Item>

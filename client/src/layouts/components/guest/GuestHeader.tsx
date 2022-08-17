@@ -4,7 +4,7 @@ import {
     Layout,
     Menu
 } from "antd";
-import { profile, signin, signup, template } from "../../../app-icons";
+import { HomeOutlined, IdcardOutlined, InfoCircleOutlined, LoginOutlined } from "@ant-design/icons";
 const { Header } = Layout;
 export class GuestHeader extends Component {
     render() {
@@ -20,25 +20,25 @@ export class GuestHeader extends Component {
                         <Menu mode="horizontal" defaultSelectedKeys={["home"]}>
                             <Menu.Item key="home">
                                 <Link to="/">
-                                    {template}
+                                    <HomeOutlined />
                                     <span> Home</span>
                                 </Link>
                             </Menu.Item>
                             <Menu.Item key="about-us">
                                 <Link to="/about-us">
-                                    {profile}
+                                    <InfoCircleOutlined />
                                     <span> About Us</span>
                                 </Link>
                             </Menu.Item>
                             <Menu.Item key="register">
                                 <Link to="/register">
-                                    {signup}
+                                    <IdcardOutlined />
                                     <span> Sign Up</span>
                                 </Link>
                             </Menu.Item>
                             <Menu.Item key="login">
                                 <Link to="/login">
-                                    {signin}
+                                    <LoginOutlined />
                                     <span> Log In</span>
                                 </Link>
                             </Menu.Item>

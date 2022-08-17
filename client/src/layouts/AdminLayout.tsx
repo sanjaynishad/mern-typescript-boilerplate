@@ -1,3 +1,4 @@
+import './AdminLayout.css';
 import { Outlet, useLocation } from "react-router-dom";
 import { Drawer, Layout } from "antd";
 import AdminSideNav from "./components/admin/AdminSideNav";

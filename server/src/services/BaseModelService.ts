@@ -21,4 +21,13 @@ export class BaseModelService<TModel extends Model<any, any, any>, TDocument ext
 
         return await this.Model.findById(id).catch(logError);
     }
+
+    /**
+     * Get all entities with a query.
+     * @param query mongo db query for the entity
+     * @returns list of entities. e.g. Users
+     */
+    async getAll(query = {}): Promise<TDocument[] | undefined> {
+        return await this.Model.find(query).catch(logError);
+    }
 }

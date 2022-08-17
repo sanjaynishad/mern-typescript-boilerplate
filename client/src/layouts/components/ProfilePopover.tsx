@@ -8,6 +8,7 @@ import { User } from '../../models';
 
 interface IProfilePopoverState {
     me: User;
+    visible: boolean;
 }
 
 export class ProfilePopover extends Component<React.HTMLAttributes<HTMLDivElement>, IProfilePopoverState> {
@@ -15,7 +16,8 @@ export class ProfilePopover extends Component<React.HTMLAttributes<HTMLDivElemen
         super(props);
 
         this.state = {
-            me: {}
+            me: {},
+            visible: false,
         }
     }
 
@@ -41,8 +43,8 @@ export class ProfilePopover extends Component<React.HTMLAttributes<HTMLDivElemen
                 <h5>{email}</h5>
 
                 <div className="mb-1">
-                    <Link to="profile">
-                        <Button >Manage account</Button>
+                    <Link to="profile" onClick={() => this.setState({ visible: false })}>
+                        <Button>Manage account</Button>
                     </Link>
                 </div>
             </div>
@@ -55,7 +57,13 @@ export class ProfilePopover extends Component<React.HTMLAttributes<HTMLDivElemen
         </div>
 
         return (
-            <Popover placement="bottomRight" content={popoverContent} trigger="click" className={this.props.className}>
+            <Popover
+                placement="bottomRight"
+                visible={this.state.visible}
+                content={popoverContent}
+                trigger="click"
+                onVisibleChange={visible => this.setState({ visible })}
+                className={this.props.className}>
                 <span className="profile-icon">
                     <img src={defaultProfileImg} alt={firstName} />
                 </span>

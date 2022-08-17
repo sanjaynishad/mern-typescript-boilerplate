@@ -33,8 +33,13 @@ Read on on how to set up this for development. Clone the repo.
 ```
 $ git clone https://github.com/sanjaynishad/mern-typescript-boilerplate.git
 $ cd mern-typescript-boilerplate
+$ npm i
+$ npm run serve
 ```
 
 ## TODO
  - Fix icons
  - Fix style naming
+ - Improve this doc and add more info about projects :)
+ - Add server side pagination with users table
+ - CRUD with User admin page 
