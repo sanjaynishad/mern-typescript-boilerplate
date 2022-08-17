@@ -17,9 +17,6 @@ Node typescript boilerplate with React, Express, Mongoose, JWT, Facebook and Goo
 - Client
 
   - React client with functional components
-  - Multiple layout for Guest, Autherised users and Admins 
-  - Dynamic Class Name to Body When Navigating
-  - Lazy Loading
   - [ant.design](https://ant.design/) components
   - Home, Users, Profile, Admin, Notfound, Login and Register pages
   - Protected routes with Higher order components
@@ -33,13 +30,4 @@ Read on on how to set up this for development. Clone the repo.
 ```
 $ git clone https://github.com/sanjaynishad/mern-typescript-boilerplate.git
 $ cd mern-typescript-boilerplate
-$ npm i
-$ npm run serve
 ```
-
-## TODO
- - Fix icons
- - Fix style naming
- - Improve this doc and add more info about projects :)
- - Add server side pagination with users table
- - CRUD with User admin page 

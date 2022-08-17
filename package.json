@@ -1,0 +1,35 @@
+{
+  "name": "mern-typescript-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/dist/index.js",
+  "scripts": {
+    "serve": "concurrently \"npm run serve:server\" \"npm run serve:client\"",
+    "serve:server": "cd server && npm run serve",
+    "serve:client": "cd client && npm start",
+    "lint": "tslint  --fix **/src/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanjaynishad/mern-typescript-boilerplate.git"
+  },
+  "keywords": [
+    "MERN",
+    "react",
+    "typescript boilerplate",
+    "google oauth",
+    "facebook oauth"
+  ],
+  "author": "Sanjay Nishad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sanjaynishad/mern-typescript-boilerplate/issues"
+  },
+  "homepage": "https://github.com/sanjaynishad/mern-typescript-boilerplate#readme",
+  "devDependencies": {
+    "concurrently": "^7.3.0",
+    "cross-env": "^7.0.3",
+    "tslint": "^6.1.3"
+  }
+}

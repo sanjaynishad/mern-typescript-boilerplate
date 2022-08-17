@@ -1,0 +1,119 @@
+.layout-default.ant-layout.layout-sign-up header.ant-layout-header {
+    background-color: transparent;
+    color: #fff;
+    box-shadow: none;
+    margin: 0;
+    padding: 0 20px;
+    z-index: 1;
+}
+
+.layout-default.ant-layout.layout-sign-up {
+    padding: 11px;
+}
+
+@media (min-width: 768px) {
+    .sign-img img {
+        margin: 0;
+    }
+
+    .card-signup {
+        margin-bottom: 120px;
+    }
+
+    .card-signup .sign-up-gateways .ant-btn {
+        width: 100px;
+    }
+}
+
+.sign-up-header {
+    height: 550px;
+    margin-top: -62.8px;
+    padding-top: 137.8px;
+    border-radius: 12px;
+    box-shadow: 0 20px 27px rgb(0 0 0 / 5%);
+    background-size: cover;
+    background-position: 50%;
+    text-align: center;
+    background: url("../assets/images/bg-signup.jpg") no-repeat center top;
+}
+
+.sign-up-header .content {
+    padding-top: 40px;
+    max-width: 480px;
+    margin: auto;
+}
+
+.sign-up-header * {
+    color: #fff;
+}
+
+.sign-up-header .content h1 {
+    font-size: 48px;
+    color: #fff;
+}
+
+
+.card-signup .sign-up-gateways .ant-btn {
+    margin-right: 10px;
+    margin-left: 10px;
+    height: 60px;
+    width: 70px;
+    box-shadow: none;
+    border-radius: 6px;
+    font-size: 25px;
+}
+
+.card-signup {
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    box-shadow: 0 20px 27px rgb(0 0 0 / 5%);
+    border-radius: 12px;
+    margin-top: -190px;
+    margin-bottom: 20px;
+}
+
+.card-signup h5 {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: #141414;
+    margin: 0px;
+}
+
+.header-solid .ant-card-head {
+    border-bottom: 0;
+}
+
+.card-signup .sign-up-gateways .ant-btn img {
+    width: 20px;
+}
+
+.sign-up-gateways {
+    text-align: center;
+}
+
+.layout-sign-up .ant-layout-footer {
+    padding: 24px 50px;
+}
+
+.layout-default.ant-layout.layout-sign-up .ant-layout-footer ul li:after {
+    display: none;
+}
+
+.layout-default.ant-layout.layout-sign-up footer.ant-layout-footer ul li a svg {
+    width: 18px;
+    height: 18px;
+}
+
+.layout-default.ant-layout.layout-sign-up .header-col.header-nav a {
+    color: #fff;
+}
+
+.layout-default.ant-layout.layout-sign-up .header-col.header-nav svg path.fill-muted {
+    fill: #fff;
+}
+
+.layout-default.ant-layout.layout-sign-up .header-col.header-brand h5 {
+    color: #fff;
+}
