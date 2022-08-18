@@ -30,6 +30,28 @@ export class AuthApi extends ApiBase<ModelBase> {
         return false;
     }
 
+    async loginWithGoogle(credential: string) {
+        if (!credential) {
+            return;
+        }
+
+        const response = await this.post('login/google', {
+            code: credential
+        });
+
+        const res = await response.json();
+        if (res?.data?.token) {
+            this.cache.token = res.data.token;
+            if (this.cache.token) {
+                localStorage.setItem('token', this.cache.token);
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
     async me() {
         if (!this.cache.token) {
             return;

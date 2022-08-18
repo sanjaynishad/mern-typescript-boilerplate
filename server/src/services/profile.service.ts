@@ -10,7 +10,9 @@ class ProfileService extends BaseModelService<typeof User, UserDocument> {
     }
 
     async registerUser(body: any) {
-        const data = registerSchema.validate(body);
+        const data = registerSchema.validate(body, {
+            allowUnknown: true
+        });
         if (data.error) {
             return {
                 error: {

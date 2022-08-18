@@ -14,7 +14,6 @@ import { User } from "../models";
 
 const { Title } = Typography;
 
-// table code start
 const columns: ColumnsType<User> = [
     {
         title: "USER",
@@ -77,6 +76,7 @@ export default class UsersPage extends Component<any, IUsersPageState> {
                                 columns={columns}
                                 dataSource={this.state.users}
                                 pagination={false}
+                                rowKey="_id"
                                 className="ant-border-space"
                             />
                         </div>

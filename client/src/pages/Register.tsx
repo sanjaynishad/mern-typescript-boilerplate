@@ -80,17 +80,9 @@ export default class RegisterPage extends Component<any, IRegisterState> {
     }
 
     render() {
-        const onFinish = (values: any) => {
-            console.log("Success:", values);
-        };
-
-        const onFinishFailed = (errorInfo: any) => {
-            console.log("Failed:", errorInfo);
-        };
-
         if (authProvider.isLoggedIn()) {
             return (
-                <Navigate to="/dashbaord" replace />
+                <Navigate to="/" replace />
             )
         }
 
@@ -129,8 +121,6 @@ export default class RegisterPage extends Component<any, IRegisterState> {
                         <Form
                             name="basic"
                             initialValues={{ remember: true }}
-                            onFinish={onFinish}
-                            onFinishFailed={onFinishFailed}
                             onSubmitCapture={this.onSubmit}
                             className="row-col"
                         >

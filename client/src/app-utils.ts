@@ -28,3 +28,13 @@ export function generateHash(obj: any) {
 export function capitalizeFirstLetter(str: string) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+export function loadScript(scriptSrc: string, onload: () => void) {
+    var script = document.createElement('script');
+    script.src = scriptSrc;
+
+    script.type = "text/javascript";
+    script.async = false;
+    script.onload = onload;
+    document.body.appendChild(script);
+}

@@ -32,11 +32,11 @@ export class ProfilePopover extends Component<React.HTMLAttributes<HTMLDivElemen
             return null;
         }
 
-        const { firstName, lastName, email } = this.state.me;
+        const { firstName, lastName, email, avatar } = this.state.me;
 
         const popoverContent = <div>
             <div className="profile-info">
-                <img src={defaultProfileImg} alt="Sanjay Nishad" />
+                <img src={avatar || defaultProfileImg} alt="Sanjay Nishad" />
                 <h3>
                     {firstName} {lastName}
                 </h3>
@@ -65,7 +65,7 @@ export class ProfilePopover extends Component<React.HTMLAttributes<HTMLDivElemen
                 onVisibleChange={visible => this.setState({ visible })}
                 className={this.props.className}>
                 <span className="profile-icon">
-                    <img src={defaultProfileImg} alt={firstName} />
+                    <img src={avatar || defaultProfileImg} alt={firstName} />
                 </span>
             </Popover>
         );

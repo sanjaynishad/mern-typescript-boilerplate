@@ -30,22 +30,22 @@ export interface IUser {
     email: string;
     password?: string;
     role: Role;
-    passwordResetToken: string;
-    passwordResetExpires: Date;
+    passwordResetToken?: string;
+    passwordResetExpires?: Date;
 
     // OAuth profile ids
-    facebook: string;
-    twitter: string;
-    google: string;
-    github: string;
-    linkedin: string;
+    facebook?: string;
+    twitter?: string;
+    google?: string;
+    github?: string;
+    linkedin?: string;
 
     tokens?: IToken[];
 
     firstName: string;
     lastName: string;
-    gender: string;
-    address: IAddress;
+    gender?: string;
+    address?: IAddress;
 
-    avatar: string;
+    avatar?: string;
 }

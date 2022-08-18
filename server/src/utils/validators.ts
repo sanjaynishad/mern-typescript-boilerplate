@@ -16,5 +16,5 @@ export const registerSchema = Joi.object<IUser>().keys({
     //     .regex(/^[a-zA-Z0-9_]+$/)
     //     .required(),
     email: Joi.string().trim().email().required().label("Email"),
-    password: Joi.string().trim().min(6).max(20).required().label("Password"),
+    password: Joi.string().trim().min(6).max(20).label("Password"),
 });

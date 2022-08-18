@@ -13,6 +13,7 @@ import {
 } from "antd";
 import signinbg from "../assets/images/img-signin.jpg";
 import { authProvider } from '../api/AuthApi';
+import { GoogleLoginButton } from '../components/GoogleLoginButton';
 const { Title } = Typography;
 const { Content } = Layout;
 
@@ -120,6 +121,9 @@ export default class LoginPage extends Component<any, ILoginPageState> {
                                 >
                                     Log In
                                 </Button>
+                            </Form.Item>
+                            <Form.Item>
+                                <GoogleLoginButton />
                             </Form.Item>
                             <p className="font-semibold text-muted">
                                 Don't have an account?{" "}
