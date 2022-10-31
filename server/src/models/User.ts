@@ -2,6 +2,7 @@ import * as bcrypt from 'bcrypt';
 
 import { IToken, IUser, Role } from './../interfaces';
 import mongoose, { Document, FlatRecord, Model, Query, Schema } from 'mongoose';
+import paginate from 'mongoose-paginate-v2';
 
 interface IUserMethods {
     comparePassword(password: string): boolean;
@@ -76,6 +77,9 @@ userSchema.query.withPassword = function () {
 
 // Custom statics
 // userSchema.statics.
+
+// paginate plugin
+userSchema.plugin(paginate);
 
 export type UserDocument = Document<any, any, IUser> & IUser & {
     _id: mongoose.Types.ObjectId;

@@ -1,7 +1,7 @@
 import { ModelBase, Role } from "../models";
 import { ApiBase } from "./ApiBase";
 
-export class AuthApi extends ApiBase<ModelBase> {
+class AuthApi extends ApiBase<ModelBase> {
     constructor() {
         super(ModelBase, '', 'auth');
     }

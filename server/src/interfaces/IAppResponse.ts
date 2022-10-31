@@ -7,6 +7,7 @@ interface IErrorResponseBody {
 
 interface AppResponseBody {
     data?: { [key: string]: any } | any[];
+    meta?: { [key: string]: any };
     message?: string;
     error?: IErrorResponseBody;
 }

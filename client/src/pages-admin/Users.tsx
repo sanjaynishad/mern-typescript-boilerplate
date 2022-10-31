@@ -2,7 +2,6 @@ import {
     Row,
     Col,
     Card,
-    Table,
     Button,
     Avatar,
     Typography,
@@ -11,6 +10,7 @@ import { ColumnsType } from "antd/es/table";
 import { Component, ReactNode } from "react";
 import { userApi } from "../api/UserApi";
 import { User } from "../models";
+import { EntityTable } from "./../components/EntityTable";
 
 const { Title } = Typography;
 
@@ -72,12 +72,15 @@ export default class UsersPage extends Component<any, IUsersPageState> {
                         title="Authors Table"
                     >
                         <div className="table-responsive">
-                            <Table
+                            <EntityTable
                                 columns={columns}
                                 dataSource={this.state.users}
                                 pagination={false}
                                 rowKey="_id"
                                 className="ant-border-space"
+                                loadEntities={async query => {
+                                    return await userApi.getAllOrDefault(query);
+                                }}
                             />
                         </div>
                     </Card>
